@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="el"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Επανάληψη – Γλώσσα Δ΄ Τάξης</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 20mm; }
+  body { font-family: "Segoe UI", "Noto Sans", Arial, sans-serif; font-size: 21px; line-height: 1.6; color: #222; max-width: 900px; margin: 0 auto; padding: 24px 20px 70px; }
+  h1 { font-size: 34px; text-align: center; margin: 0 0 4px; color: #3b5a2a; }
+  .sub { text-align: center; font-size: 22px; margin: 0 0 18px; color: #555; }
+  .head { font-size: 22px; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 3px solid #b9c98f; }
+  h2 { font-size: 27px; color: #fff; background: #7a8f4c; padding: 6px 16px; border-radius: 10px; margin: 30px 0 12px; break-after: avoid; }
+  @media print { h2.pb { break-before: page; margin-top: 0; } .instr.pb { break-before: page; } }
+  .instr { font-weight: 600; margin: 18px 0 8px; break-after: avoid; }
+  .item { display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 10px 0 10px 12px; break-inside: avoid; }
+  .item > span:nth-child(2) { flex: 1 1 60%; }
+  .item .n { font-weight: 700; color: #7a8f4c; min-width: 1.4em; flex: 0 0 auto; }
+  .blank { display: inline-block; border-bottom: 3px dotted #555; height: 1.1em; vertical-align: baseline; margin: 0 4px; }
+  input.blank, input.cell, input.line { font: inherit; color: #1a3a8a; background: transparent; border: 0; outline: 0; }
+  input.blank { border-bottom: 3px dotted #555; padding: 0 4px; text-align: center; height: auto; }
+  input.blank:focus, input.line:focus, input.cell:focus { background: #fffbe0; }
+  input.line { display: block; width: 100%; box-sizing: border-box; border-bottom: 3px dotted #777; height: 2.3em; margin: 0 0 4px; }
+  input.cell { width: 100%; box-sizing: border-box; text-align: center; padding: 4px; }
+  .line { border-bottom: 3px dotted #777; height: 2.3em; margin: 0 0 4px; }
+  .box { background: #f6ecd9; border-left: 6px solid #d9b45c; padding: 12px 18px; margin: 10px 0; border-radius: 6px; break-inside: avoid; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 18px; break-inside: avoid; }
+  th { background: #e6edc8; font-size: 22px; }
+  th, td { border: 2px solid #8aa04f; padding: 6px 12px; text-align: center; height: 1.8em; }
+  td:has(input) { padding: 0; }
+  .tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 6px 0 10px 12px; font-size: 18px; }
+  .tools button, .checkbar button { font: inherit; font-size: 18px; padding: 6px 14px; border: 2px solid #8aa04f; background: #fff; border-radius: 10px; cursor: pointer; }
+  .tools button.on { background: #e6edc8; font-weight: 700; }
+  .w { cursor: pointer; padding: 0 3px; border-radius: 50%; border: 2px solid transparent; display: inline-block; line-height: 1.3; }
+  .w.circ { border-color: #d33; }
+  .w.ul { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 4px; }
+  .w.wbad { background: #ffe0e0; }
+  .opt { cursor: pointer; padding: 0 5px; border-radius: 50%; border: 2px solid transparent; }
+  .opt:hover { background: #f1f5df; }
+  .opt.sel { border-color: #d33; background: #fff3f3; }
+  .opt.sel.ok { border-color: #2a9d3b; background: #e6f6e6; }
+  .opt.sel.bad { border-color: #b00; background: #ffe0e0; }
+  input.ok { color: #1d6b2b; background: #e9f7ea; border-bottom-color: #2a9d3b; }
+  input.bad { color: #b00; background: #ffecec; border-bottom-color: #b00; }
+  .item.ok .n { color: #2a9d3b; } .item.bad .n { color: #b00; }
+  .lgroup.ok { outline: 3px solid #bfe6c4; border-radius: 6px; } .lgroup.bad { outline: 3px solid #f5c2c2; border-radius: 6px; }
+  .fb { color: #b00; font-size: 0.8em; margin: 0 6px; font-weight: 600; }
+  .fb.good { color: #2a7a38; }
+  .lgroup + .fb, .item + .fb { display: block; margin: -4px 0 8px 12px; }
+  .checkbar { position: sticky; bottom: 0; background: #fff; border-top: 3px solid #b9c98f; padding: 10px 8px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 24px; }
+  .checkbar #btnCheck { background: #7a8f4c; color: #fff; border-color: #7a8f4c; font-weight: 700; }
+  #result { font-size: 22px; font-weight: 700; color: #3b5a2a; }
+  #result.allright::after { content: " 🎉"; }
+  footer { text-align: center; color: #777; font-size: 16px; margin-top: 40px; border-top: 1px solid #ccc; padding-top: 10px; }
+  @media print {
+    .noprint { display: none !important; }
+    body { font-size: 13.5pt; line-height: 1.45; padding: 0; max-width: none; }
+    h1 { font-size: 22pt; } .sub { font-size: 14pt; } .head { font-size: 14pt; }
+    h2 { font-size: 16pt; margin: 14px 0 8px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .box, th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .line, input.line { height: 1.9em; } .item { margin: 5px 0 5px 10px; } .instr { margin: 10px 0 4px; }
+    footer { position: fixed; bottom: 0; left: 0; right: 0; margin: 0; background: #fff; font-size: 11pt; }
+  }
+</style></head><body>
+<h1>Επανάληψη – Γλώσσα Δ΄ Τάξης</h1>
+<p class="sub">1η Ενότητα: «Ξημερώνει μια νέα μέρα… Ώρα για σχολείο»</p>
+<p class="head">Όνομα: <input class="blank" type="text" autocomplete="off" data-ans="" style="width:8.5em">  Ημερομηνία: <input class="blank" type="text" autocomplete="off" data-ans="" style="width:5.1em">  Τάξη: <input class="blank" type="text" autocomplete="off" data-ans="" style="width:2.6em"></p>
+<h2>Θέμα 1ο – Υποκείμενο και αντικείμενο</h2><p class="instr">Κύκλωσε το <b>υποκείμενο</b> και υπογράμμισε το <b>αντικείμενο</b> του ρήματος στις παρακάτω προτάσεις.</p><div class="tools noprint"><span>Διάλεξε εργαλείο και πάτα πάνω στις λέξεις:</span><button type="button" data-tool="circle" class="on">⭕ Κύκλωσε</button><button type="button" data-tool="underline">▁ Υπογράμμισε</button><button type="button" data-tool="erase">✖ Σβήσε</button></div><p class="item" data-kind="mark" data-subj="Ο γιατρός" data-obj="τον ασθενή"><span class="n">1.</span><span><span class="w" data-a="c">Ο</span> <span class="w" data-a="c">γιατρός</span> <span class="w" data-a="">εξέτασε</span> <span class="w" data-a="u">τον</span> <span class="w" data-a="">ασθενή.</span></span></p><p class="item" data-kind="mark" data-subj="Η μικρή Άννα" data-obj="ένα κασκόλ"><span class="n">2.</span><span><span class="w" data-a="c">Η</span> <span class="w" data-a="c">μικρή</span> <span class="w" data-a="c">Άννα</span> <span class="w" data-a="">πλέκει</span> <span class="w" data-a="u">ένα</span> <span class="w" data-a="">κασκόλ.</span></span></p><p class="item" data-kind="mark" data-subj="Οι μαθητές" data-obj="τον πίνακα"><span class="n">3.</span><span><span class="w" data-a="c">Οι</span> <span class="w" data-a="c">μαθητές</span> <span class="w" data-a="">καθαρίζουν</span> <span class="w" data-a="u">τον</span> <span class="w" data-a="">πίνακα.</span></span></p><p class="item" data-kind="mark" data-subj="η δασκάλα" data-obj="Τα βιβλία"><span class="n">4.</span><span><span class="w" data-a="u">Τα</span> <span class="w" data-a="u">βιβλία</span> <span class="w" data-a="">μαζεύει</span> <span class="w" data-a="c">η</span> <span class="w" data-a="c">δασκάλα</span> <span class="w" data-a="">κάθε</span> <span class="w" data-a="">Παρασκευή.</span></span></p><p class="item" data-kind="mark" data-subj="Οι αρχαιολόγοι" data-obj="ένα παλιό άγαλμα"><span class="n">5.</span><span><span class="w" data-a="c">Οι</span> <span class="w" data-a="c">αρχαιολόγοι</span> <span class="w" data-a="">ανακάλυψαν</span> <span class="w" data-a="u">ένα</span> <span class="w" data-a="u">παλιό</span> <span class="w" data-a="">άγαλμα.</span></span></p><p class="item" data-kind="mark" data-subj="Ο μάστορας" data-obj="μια ξύλινη καρέκλα"><span class="n">6.</span><span><span class="w" data-a="c">Ο</span> <span class="w" data-a="c">μάστορας</span> <span class="w" data-a="">έφτιαξε</span> <span class="w" data-a="u">μια</span> <span class="w" data-a="u">ξύλινη</span> <span class="w" data-a="">καρέκλα.</span></span></p><h2>Θέμα 2ο – Οι χρόνοι του ρήματος</h2><p class="instr">Συμπλήρωσε τα ρήματα και στους τρεις χρόνους, στο ίδιο πρόσωπο και στον ίδιο αριθμό.</p><table><thead><tr><th>Ενεστώτας</th><th>Παρατατικός</th><th>Εξακολουθητικός Μέλλοντας</th></tr></thead><tbody><tr><td>ακούω</td><td><input class="cell" type="text" autocomplete="off" data-ans="άκουγα"></td><td><input class="cell" type="text" autocomplete="off" data-ans="θα ακούω"></td></tr><tr><td><input class="cell" type="text" autocomplete="off" data-ans="βλέπω"></td><td>έβλεπα</td><td><input class="cell" type="text" autocomplete="off" data-ans="θα βλέπω"></td></tr><tr><td><input class="cell" type="text" autocomplete="off" data-ans="βάφουμε"></td><td><input class="cell" type="text" autocomplete="off" data-ans="βάφαμε"></td><td>θα βάφουμε</td></tr><tr><td>σκουπίζει</td><td><input class="cell" type="text" autocomplete="off" data-ans="σκούπιζε"></td><td><input class="cell" type="text" autocomplete="off" data-ans="θα σκουπίζει"></td></tr><tr><td><input class="cell" type="text" autocomplete="off" data-ans="μαθαίνεις"></td><td>μάθαινες</td><td><input class="cell" type="text" autocomplete="off" data-ans="θα μαθαίνεις"></td></tr><tr><td><input class="cell" type="text" autocomplete="off" data-ans="πετούν"></td><td><input class="cell" type="text" autocomplete="off" data-ans="πετούσαν"></td><td>θα πετούν</td></tr></tbody></table><h2>Θέμα 3ο – Επίθετα σε -ινος</h2><p class="instr">Α. Σχημάτισε επίθετο από τη λέξη της παρένθεσης και συμπλήρωσε τις προτάσεις (πρόσεξε το γένος, τον αριθμό και την πτώση).</p><p class="item"><span class="n">1.</span><span>Έβαλα λουλούδια σε ένα <input class="blank" type="text" autocomplete="off" data-ans="πήλινο" style="width:6.8em"> (πηλός) βάζο.</span></p><p class="item"><span class="n">2.</span><span>Ο δρόμος που οδηγεί στο ξωκλήσι είναι <input class="blank" type="text" autocomplete="off" data-ans="χωμάτινος" style="width:6.8em"> (χώμα).</span></p><p class="item"><span class="n">3.</span><span>Το <input class="blank" type="text" autocomplete="off" data-ans="απογευματινό" style="width:6.8em"> (απόγευμα) πρόγραμμα του σχολείου τελειώνει στις έξι.</span></p><p class="item"><span class="n">4.</span><span>Φόρεσα τα <input class="blank" type="text" autocomplete="off" data-ans="μάλλινα" style="width:6.8em"> (μαλλί) γάντια μου.</span></p><p class="item"><span class="n">5.</span><span>Ο <input class="blank" type="text" autocomplete="off" data-ans="νυχτερινός" style="width:6.8em"> (νύχτα) φύλακας του μουσείου δεν κοιμάται ποτέ.</span></p><p class="item"><span class="n">6.</span><span>Τα <input class="blank" type="text" autocomplete="off" data-ans="κρυστάλλινα" style="width:6.8em"> (κρύσταλλο) ποτήρια είναι στη βιτρίνα.</span></p><p class="instr">Β. Κύκλωσε τη σωστή γραφή.</p><p class="item" data-kind="choice" data-ans="φωτεινό"><span class="n">1.</span><span>Ο φάρος έχει ένα <span class="choice">(<span class="opt">φωτεινό</span> / <span class="opt">φωτινό</span>)</span> φως.</span></p><p class="item" data-kind="choice" data-ans="υπεύθυνη"><span class="n">2.</span><span>Η αδερφή μου είναι <span class="choice">(<span class="opt">υπεύθυνη</span> / <span class="opt">υπεύθινη</span>)</span>.</span></p><p class="item" data-kind="choice" data-ans="φτηνά"><span class="n">3.</span><span>Αυτά τα παπούτσια είναι <span class="choice">(<span class="opt">φτηνά</span> / <span class="opt">φτινά</span>)</span>.</span></p><p class="item" data-kind="choice" data-ans="υγιεινή"><span class="n">4.</span><span>Η σαλάτα είναι <span class="choice">(<span class="opt">υγιεινή</span> / <span class="opt">υγιηνή</span>)</span> τροφή.</span></p><p class="item" data-kind="choice" data-ans="ορεινές"><span class="n">5.</span><span>Στις <span class="choice">(<span class="opt">ορεινές</span> / <span class="opt">ορινές</span>)</span> περιοχές χιονίζει συχνά.</span></p><p class="item" data-kind="choice" data-ans="επικίνδυνο"><span class="n">6.</span><span>Είναι <span class="choice">(<span class="opt">επικίνδυνο</span> / <span class="opt">επικίνδινο</span>)</span> να τρέχεις στον δρόμο.</span></p><h2>Θέμα 4ο – Ξαναγράφω το κείμενο</h2><div class="box">«Τα παιδιά πηγαίνουν στη θάλασσα. Ο Νίκος φτιάχνει ένα κάστρο και η Ελπίδα μαζεύει βότσαλα. Οι γονείς τα φωτογραφίζουν και γελούν.»</div><p class="instr">Α. Ξαναγράψε το κείμενο βάζοντας τα ρήματα στον <b>παρατατικό</b>, στο κατάλληλο πρόσωπο και στον κατάλληλο αριθμό.</p><div class="lgroup" data-verbs="[&quot;πήγαιναν&quot;,&quot;έφτιαχνε&quot;,&quot;μάζευε&quot;,&quot;φωτογράφιζαν&quot;,&quot;γελούσαν&quot;]" data-label="undefined"><input class="line" type="text" autocomplete="off"><input class="line" type="text" autocomplete="off"><input class="line" type="text" autocomplete="off"></div><p class="instr">Β. Ξαναγράψε το κείμενο βάζοντας τα ρήματα στον <b>εξακολουθητικό μέλλοντα</b>.</p><div class="lgroup" data-verbs="[&quot;θα πηγαίνουν&quot;,&quot;θα φτιάχνει&quot;,&quot;θα μαζεύει&quot;,&quot;θα φωτογραφίζουν&quot;,&quot;θα γελούν&quot;]" data-label="undefined"><input class="line" type="text" autocomplete="off"><input class="line" type="text" autocomplete="off"><input class="line" type="text" autocomplete="off"></div><h2>Θέμα 5ο – Λέξεις με δυσ- και δι(σ)-</h2><p class="instr">Α. Συμπλήρωσε στα κενά των λέξεων το α΄ συνθετικό <b>δι(σ)-</b> ή <b>δυσ-</b> που λείπει.</p><p class="item"><span class="n">1.</span><span>Η λέξη «νερό» είναι <input class="blank" type="text" autocomplete="off" data-ans="δι" style="width:2.6em">σύλλαβη.</span></p><p class="item"><span class="n">2.</span><span>Η εξήγηση του ταξιδιώτη ήταν <input class="blank" type="text" autocomplete="off" data-ans="δυσ" style="width:2.6em">νόητη και δεν την καταλάβαμε.</span></p><p class="item"><span class="n">3.</span><span>Η εξώπορτα του σπιτιού είναι <input class="blank" type="text" autocomplete="off" data-ans="δι" style="width:2.6em">φυλλη.</span></p><p class="item"><span class="n">4.</span><span>Το κεφάλι του αγάλματος ήταν <input class="blank" type="text" autocomplete="off" data-ans="δυσ" style="width:2.6em">ανάλογο με το σώμα.</span></p><p class="item"><span class="n">5.</span><span>Η ταινία κράτησε δύο ώρες· ήταν <input class="blank" type="text" autocomplete="off" data-ans="δι" style="width:2.6em">ωρη.</span></p><p class="item"><span class="n">6.</span><span>Το μωρό έκλαιγε, γιατί η ζέστη του προκαλούσε <input class="blank" type="text" autocomplete="off" data-ans="δυσ" style="width:2.6em">φορία.</span></p><p class="instr">Β. Ο Φάνης έγραψε μια παράγραφο και έκανε <b>τέσσερα</b> ορθογραφικά λάθη σε λέξεις με δυσ- ή δι(σ)-. Βρες τα και γράψε τις λέξεις σωστά.</p><div class="box">«Το Σάββατο φύγαμε για το νησί. Στο πλοίο η θάλασσα ήταν ταραγμένη και το ταξίδι ήταν δισάρεστο. Στο ξενοδοχείο μάς έδωσαν ένα δύκλινο δωμάτιο. Ο μικρός μου αδελφός είναι δύχρονος και δισκολεύτηκε να κοιμηθεί.»</div><div class="lgroup" data-verbs="[&quot;δυσάρεστο&quot;,&quot;δίκλινο&quot;,&quot;δίχρονος&quot;,&quot;δυσκολεύτηκε&quot;]" data-label="undefined"><input class="line" type="text" autocomplete="off"></div>
+<div class="checkbar noprint"><button type="button" id="btnCheck">✔ Έλεγχος</button><button type="button" id="btnClear">↺ Καθαρισμός</button><span id="result"></span></div>
+<footer>© myspiderwebsite</footer>
+<script>
+(function () {
+  var tool = 'circle';
+  function norm(s) {
+    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ς/g, 'σ')
+      .replace(/[.,;:·«»"'!?()]/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+  document.querySelectorAll('.tools button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      tool = b.getAttribute('data-tool');
+      document.querySelectorAll('.tools button').forEach(function (x) { x.classList.toggle('on', x === b); });
+    });
+  });
+  document.addEventListener('click', function (e) {
+    var w = e.target.closest('.w');
+    if (w) {
+      if (tool === 'erase') { w.classList.remove('circ', 'ul'); }
+      else { w.classList.toggle(tool === 'circle' ? 'circ' : 'ul'); }
+      return;
+    }
+    var o = e.target.closest('.opt');
+    if (o) {
+      var already = o.classList.contains('sel');
+      o.parentNode.querySelectorAll('.opt').forEach(function (x) { x.classList.remove('sel', 'ok', 'bad'); });
+      if (!already) o.classList.add('sel');
+    }
+  });
+
+  function clearMarks() {
+    document.querySelectorAll('.fb').forEach(function (x) { x.remove(); });
+    document.querySelectorAll('.ok,.bad,.wbad').forEach(function (x) { x.classList.remove('ok', 'bad', 'wbad'); });
+    document.getElementById('result').textContent = '';
+  }
+  function fb(afterEl, text, good) {
+    var s = document.createElement('span');
+    s.className = 'fb noprint' + (good ? ' good' : '');
+    s.textContent = text;
+    afterEl.insertAdjacentElement('afterend', s);
+  }
+  function check() {
+    clearMarks();
+    var total = 0, right = 0;
+    // typed answers: blanks and table cells
+    document.querySelectorAll('input.blank, input.cell').forEach(function (inp) {
+      var answers = (inp.getAttribute('data-ans') || '').split('|').filter(Boolean);
+      if (!answers.length) return;
+      total++;
+      var v = inp.value.trim();
+      var exact = answers.indexOf(v) >= 0;
+      var lenient = answers.some(function (a) { return v && norm(a) === norm(v); });
+      if (exact) { inp.classList.add('ok'); right++; }
+      else if (lenient) { inp.classList.add('ok'); right++; fb(inp, '(πρόσεξε τον τόνο: ' + answers[0] + ')', true); }
+      else { inp.classList.add('bad'); fb(inp, '→ ' + answers[0], false); }
+    });
+    // circle-the-right-spelling items
+    document.querySelectorAll('.item[data-kind="choice"]').forEach(function (it) {
+      total++;
+      var correct = it.getAttribute('data-ans');
+      var sel = it.querySelector('.opt.sel');
+      if (sel && sel.textContent === correct) { sel.classList.add('ok'); right++; }
+      else {
+        if (sel) sel.classList.add('bad');
+        fb(it.querySelector('.choice'), '→ ' + correct, false);
+      }
+    });
+    // subject / object marking
+    document.querySelectorAll('.item[data-kind="mark"]').forEach(function (it) {
+      total++;
+      var ok = true;
+      it.querySelectorAll('.w').forEach(function (w) {
+        var a = w.getAttribute('data-a');
+        var wantC = a.indexOf('c') >= 0, wantU = a.indexOf('u') >= 0;
+        if (w.classList.contains('circ') !== wantC || w.classList.contains('ul') !== wantU) { ok = false; w.classList.add('wbad'); }
+      });
+      if (ok) { right++; it.classList.add('ok'); }
+      else { it.classList.add('bad'); fb(it, 'Υποκείμενο: ' + it.getAttribute('data-subj') + ' · Αντικείμενο: ' + it.getAttribute('data-obj'), false); }
+    });
+    // rewritten text / corrected words (look for the expected words)
+    document.querySelectorAll('.lgroup').forEach(function (g) {
+      var verbs = JSON.parse(g.getAttribute('data-verbs') || '[]');
+      if (!verbs.length) return;
+      var text = ' ' + norm(Array.prototype.map.call(g.querySelectorAll('input'), function (i) { return i.value; }).join(' ')) + ' ';
+      var missing = [];
+      verbs.forEach(function (vb) {
+        total++;
+        if (text.indexOf(' ' + norm(vb) + ' ') >= 0) right++; else missing.push(vb);
+      });
+      if (missing.length) { g.classList.add('bad'); fb(g, 'Δεν βρέθηκαν: ' + missing.join(', ') + '  (αναμενόμενα: ' + verbs.join(', ') + ')', false); }
+      else { g.classList.add('ok'); fb(g, '✔ Σωστά όλα', true); }
+    });
+    var r = document.getElementById('result');
+    r.textContent = 'Σωστά: ' + right + ' από ' + total;
+    r.className = right === total ? 'allright' : '';
+  }
+  document.getElementById('btnCheck').addEventListener('click', check);
+  document.getElementById('btnClear').addEventListener('click', function () {
+    clearMarks();
+    document.querySelectorAll('input[type=text]').forEach(function (i) { i.value = ''; });
+    document.querySelectorAll('.w').forEach(function (w) { w.classList.remove('circ', 'ul'); });
+    document.querySelectorAll('.opt').forEach(function (o) { o.classList.remove('sel'); });
+  });
+})();
+</script>
+</body></html>
