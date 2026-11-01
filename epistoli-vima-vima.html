@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Πώς γράφω μια επιστολή – βήμα βήμα</title>
+<style>
+  :root{
+    color-scheme: light;
+    --ink:#1f2330; --muted:#5b6070;
+    --purple:#6b4a9e; --purple-l:#efe8f8;
+    --green:#4f8f26; --green-l:#e8f4dc;
+    --blue:#2a6fb0; --blue-l:#e2eef9;
+    --orange:#c0601a; --orange-l:#fdeedd;
+    --pink:#b0366a; --pink-l:#fbe5ee;
+    --yellow-l:#fff6d6; --grey-l:#eef0f4;
+  }
+  *{box-sizing:border-box}
+  html{font-size:100%}
+  body{
+    margin:0; background:#f4f1f8; color:var(--ink);
+    font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    font-size:1.3rem; line-height:1.55;
+  }
+  .page{
+    max-width:900px; margin:20px auto; background:#fff;
+    padding:34px 40px; border-radius:14px;
+    box-shadow:0 2px 12px rgba(80,50,120,.15);
+  }
+  h1{margin:0 0 6px; font-size:2.1rem; color:#fff; line-height:1.2}
+  .banner{background:var(--purple); border-radius:12px; padding:20px 26px; margin-bottom:20px}
+  .banner p{margin:0; color:#efe8f8; font-size:1.2rem}
+  h2{font-size:1.65rem; color:var(--purple); margin:26px 0 12px; line-height:1.25}
+  .think{background:var(--yellow-l); border:3px dashed #e0b84a; border-radius:12px; padding:14px 22px}
+  .think ol{margin:6px 0 4px; padding-left:1.4em}
+  .think li{margin:6px 0}
+  .think small{color:var(--muted); font-size:1.05rem}
+
+  .step{display:flex; gap:18px; align-items:flex-start; border-radius:12px; padding:16px 20px; margin:14px 0; border-left:10px solid}
+  .step .num{flex:0 0 auto; width:54px; height:54px; border-radius:50%; color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.7rem}
+  .step h3{margin:0 0 4px; font-size:1.4rem}
+  .step p{margin:4px 0}
+  .ex{background:rgba(255,255,255,.75); border-radius:8px; padding:6px 14px; display:inline-block; margin-top:4px}
+  .s1{background:var(--blue-l); border-color:var(--blue)} .s1 .num{background:var(--blue)} .s1 h3{color:var(--blue)}
+  .s2{background:var(--grey-l); border-color:#6c7a93} .s2 .num{background:#6c7a93} .s2 h3{color:#4a5670}
+  .s3{background:var(--purple-l); border-color:var(--purple)} .s3 .num{background:var(--purple)} .s3 h3{color:var(--purple)}
+  .s4{background:var(--green-l); border-color:var(--green)} .s4 .num{background:var(--green)} .s4 h3{color:var(--green)}
+  .s5{background:var(--pink-l); border-color:var(--pink)} .s5 .num{background:var(--pink)} .s5 h3{color:var(--pink)}
+  .s6{background:var(--orange-l); border-color:var(--orange)} .s6 .num{background:var(--orange)} .s6 h3{color:var(--orange)}
+
+  .paras{margin:8px 0 4px; padding:0; list-style:none}
+  .paras li{margin:6px 0; padding-left:0}
+  .paras b{color:var(--green)}
+  .tips{background:#fff; border:2px solid var(--green); border-radius:10px; padding:10px 18px; margin-top:10px}
+  .tips h4{margin:0 0 4px; color:var(--green); font-size:1.2rem}
+  .tips ul{margin:4px 0 2px; padding-left:1.3em}
+
+  .note{color:var(--muted); font-size:1.05rem; margin-top:10px}
+
+  /* annotated example */
+  .letter{border:3px solid var(--purple); border-radius:12px; overflow:hidden}
+  .row{display:grid; grid-template-columns:230px 1fr; border-top:2px solid #fff}
+  .row:first-child{border-top:none}
+  .lab{padding:12px 14px; font-weight:700; font-size:1.05rem; line-height:1.3; display:flex; align-items:center}
+  .txt{padding:12px 20px; font-size:1.2rem; background:#fff}
+  .txt p{margin:0}
+  .r{text-align:right}
+  .c-grey{background:var(--grey-l); color:#4a5670}
+  .c-purple{background:var(--purple-l); color:var(--purple)}
+  .c-green{background:var(--green-l); color:var(--green)}
+  .c-blue{background:var(--blue-l); color:var(--blue)}
+  .c-orange{background:var(--orange-l); color:var(--orange)}
+  .c-pink{background:var(--pink-l); color:var(--pink)}
+  .indent{text-indent:2em}
+
+  /* checklist */
+  .check{list-style:none; padding:0; margin:8px 0}
+  .check li{margin:6px 0}
+  .check label{display:flex; gap:12px; align-items:flex-start; cursor:pointer; padding:6px 10px; border-radius:8px}
+  .check label:hover{background:var(--orange-l)}
+  .check input{width:26px; height:26px; margin-top:3px; accent-color:var(--orange); flex:0 0 auto}
+  .counter{font-weight:700; color:var(--orange); margin-top:6px}
+
+  table.ph{width:100%; border-collapse:collapse; margin:8px 0; font-size:1.15rem}
+  table.ph td{border:2px solid #d8cdea; padding:8px 12px; vertical-align:top}
+  table.ph td:first-child{background:var(--purple-l); font-weight:700; color:var(--purple); width:27%}
+
+  .envelope{position:relative; border:3px solid #6c7a93; background:var(--yellow-l); border-radius:6px;
+    height:280px; margin:10px 0}
+  .envelope .from{position:absolute; top:12px; left:16px; font-size:1.05rem; max-width:48%}
+  .envelope .stamp{position:absolute; top:12px; right:16px; width:62px; height:74px; border:3px dashed #8a6d2a;
+    display:flex; align-items:center; justify-content:center; text-align:center; font-size:.8rem; color:#8a6d2a; line-height:1.1}
+  .envelope .to{position:absolute; bottom:14px; right:20px; font-size:1.15rem; max-width:62%}
+  .envelope b{display:block; color:#4a5670; font-size:.95rem}
+
+  footer{text-align:center; color:var(--muted); margin:18px 0 10px; font-size:1rem}
+  .page footer{border-top:2px solid #e3dcee; padding-top:10px; margin:26px 0 0}
+
+  @media (max-width:640px){
+    .page{padding:20px 16px; margin:8px}
+    .row{grid-template-columns:1fr}
+    .step{flex-direction:column; gap:8px}
+    body{font-size:1.15rem}
+    h1{font-size:1.7rem}
+  }
+  @media print{
+    body{background:#fff; font-size:15pt}
+    .page{box-shadow:none; margin:0; padding:0; max-width:none; border-radius:0; page-break-after:always}
+    .page:last-of-type{page-break-after:auto}
+    .step,.row,.think,.tips,.envelope{page-break-inside:avoid}
+    @page{size:A4; margin:14mm}
+    *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+
+<!-- ΣΕΛΙΔΑ 1 -->
+<section class="page">
+  <div class="banner">
+    <h1>✉️ Πώς γράφω μια επιστολή – βήμα βήμα</h1>
+    <p>Θέμα: Γράφω στον δήμαρχο για ένα πρόβλημα ρύπανσης στην περιοχή μας</p>
+  </div>
+
+  <h2>Πριν γράψω: σκέφτομαι</h2>
+  <div class="think">
+    <p style="margin:0">Στο πρόχειρό μου γράφω με λίγες λέξεις τις απαντήσεις σε 4 ερωτήσεις:</p>
+    <ol>
+      <li><b>Ποιο</b> είναι το πρόβλημα; <small>(Τι βλέπω; Πού;)</small></li>
+      <li><b>Γιατί</b> δημιουργήθηκε; <small>(Ποια είναι η αιτία;)</small></li>
+      <li><b>Τι κακό</b> κάνει στο περιβάλλον και σε εμάς; <small>(Συνέπειες)</small></li>
+      <li><b>Τι</b> μπορεί να γίνει; <small>(Λύσεις που προτείνω)</small></li>
+    </ol>
+  </div>
+
+  <h2>Τα βήματα</h2>
+
+  <div class="step s1">
+    <div class="num">1</div>
+    <div>
+      <h3>Τόπος και ημερομηνία</h3>
+      <p>Πάνω <b>δεξιά</b> γράφω πού βρίσκομαι και ποια μέρα είναι.</p>
+      <span class="ex">π.χ. Ξάνθη, 10 Νοεμβρίου 2026</span>
+    </div>
+  </div>
+
+  <div class="step s2">
+    <div class="num">2</div>
+    <div>
+      <h3>Τα στοιχεία μου</h3>
+      <p>Πάνω <b>αριστερά</b> γράφω ποιος στέλνει την επιστολή: το σχολείο μου, την οδό και την πόλη. <small>(Τα γράφω όταν ο παραλήπτης δεν με γνωρίζει.)</small></p>
+    </div>
+  </div>
+
+  <div class="step s3">
+    <div class="num">3</div>
+    <div>
+      <h3>Προσφώνηση</h3>
+      <p>Αφήνω <b>μία κενή γραμμή</b>. Γράφω στα αριστερά πώς μιλάω στον παραλήπτη και βάζω κόμμα.</p>
+      <span class="ex">Αξιότιμε κύριε Δήμαρχε,</span>
+      <p class="note">Σε φίλο ή συγγενή μπορώ να γράψω πιο οικεία: «Αγαπητέ Νίκο,» ή «Γιαγιά μου αγαπημένη,».</p>
+    </div>
+  </div>
+
+  <footer>© myspiderwebsite</footer>
+</section>
+
+<!-- ΣΕΛΙΔΑ 2 -->
+<section class="page">
+  <div class="step s4">
+    <div class="num">4</div>
+    <div>
+      <h3>Το κυρίως κείμενο: 4 παράγραφοι</h3>
+      <p>Κάθε παράγραφος μιλάει για <b>ένα θέμα</b>. Όταν αλλάζω θέμα, αλλάζω γραμμή και αρχίζω λίγο πιο μέσα.</p>
+      <ul class="paras">
+        <li><b>1η παράγραφος:</b> Συστήνομαι και λέω γιατί γράφω.</li>
+        <li><b>2η παράγραφος:</b> Περιγράφω το πρόβλημα: τι βλέπω, πού, πόσο συχνά.</li>
+        <li><b>3η παράγραφος:</b> Εξηγώ την αιτία και τις συνέπειες.</li>
+        <li><b>4η παράγραφος:</b> Προτείνω λύσεις και λέω ότι θέλω να βοηθήσω.</li>
+      </ul>
+      <div class="tips">
+        <h4>💡 Για να γράφω καλά</h4>
+        <ul>
+          <li>Γράφω ολόκληρες προτάσεις και βάζω τελεία.</li>
+          <li>Δίνω λεπτομέρειες: όχι «υπάρχουν σκουπίδια», αλλά «βλέπουμε πλαστικά μπουκάλια και σακούλες».</li>
+          <li>Συνδέω τις προτάσεις: <i>επειδή, έτσι, επιπλέον, όμως, γι’ αυτό</i>.</li>
+          <li>Δεν λέω το ίδιο πράγμα δύο φορές.</li>
+          <li>Είμαι ευγενικός/ή: <i>θα θέλαμε, παρακαλούμε, ευχαριστούμε</i>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="step s5">
+    <div class="num">5</div>
+    <div>
+      <h3>Κλείνω την επιστολή</h3>
+      <p>Ευχαριστώ τον παραλήπτη και λέω ότι περιμένω απάντηση. Αφήνω μία γραμμή, γράφω τον <b>χαιρετισμό</b> και από κάτω την <b>υπογραφή</b>.</p>
+      <span class="ex">Με εκτίμηση,<br>Οι μαθητές της Δ΄ τάξης του 6ου Δημοτικού Σχολείου Ξάνθης</span>
+    </div>
+  </div>
+
+  <div class="step s6">
+    <div class="num">6</div>
+    <div>
+      <h3>Ελέγχω και διορθώνω</h3>
+      <p>Διαβάζω την επιστολή μου από την αρχή μέχρι το τέλος. Συμπληρώνω τη λίστα ελέγχου (στην τελευταία σελίδα) και διορθώνω ό,τι χρειάζεται. Μετά την καθαρογράφω προσεκτικά.</p>
+    </div>
+  </div>
+
+  <footer>© myspiderwebsite</footer>
+</section>
+
+<!-- ΣΕΛΙΔΑ 3 -->
+<section class="page">
+  <h2 style="margin-top:0">Παράδειγμα επιστολής</h2>
+  <p style="margin:0 0 10px">Δες πώς εφαρμόζονται τα βήματα. Τα χρώματα δείχνουν το κάθε μέρος.</p>
+
+  <div class="letter">
+    <div class="row">
+      <div class="lab c-blue">Βήμα 1<br>Τόπος και ημερομηνία</div>
+      <div class="txt r"><p>Ξάνθη, 10 Νοεμβρίου 2026</p></div>
+    </div>
+    <div class="row">
+      <div class="lab c-grey">Βήμα 2<br>Στοιχεία αποστολέα</div>
+      <div class="txt"><p>6ο Δημοτικό Σχολείο Ξάνθης<br>Βελισσαρίου 14<br>67131, Ξάνθη</p></div>
+    </div>
+    <div class="row">
+      <div class="lab c-purple">Βήμα 3<br>Προσφώνηση<br><small>(μετά από μία κενή γραμμή)</small></div>
+      <div class="txt"><p>Αξιότιμε κύριε Δήμαρχε,</p></div>
+    </div>
+    <div class="row">
+      <div class="lab c-green">Βήμα 4 – 1η παράγραφος<br>Συστήνομαι, λέω γιατί γράφω</div>
+      <div class="txt"><p class="indent">Είμαστε οι μαθητές της Δ΄ τάξης του 6ου Δημοτικού Σχολείου Ξάνθης και σας γράφουμε για ένα πρόβλημα που μας απασχολεί πολύ: τα σκουπίδια στο πάρκο δίπλα στο σχολείο μας.</p></div>
+    </div>
+    <div class="row">
+      <div class="lab c-green">2η παράγραφος<br>Περιγράφω το πρόβλημα</div>
+      <div class="txt"><p class="indent">Κάθε μέρα, όταν πηγαίνουμε εκεί για να παίξουμε, βλέπουμε πλαστικά μπουκάλια, χαρτιά και σακούλες πεταμένα στο γρασίδι και γύρω από τα παγκάκια. Μερικές φορές οι κάδοι είναι τόσο γεμάτοι που τα σκουπίδια πέφτουν στο έδαφος.</p></div>
+    </div>
+    <div class="row">
+      <div class="lab c-green">3η παράγραφος<br>Αιτία και συνέπειες</div>
+      <div class="txt"><p class="indent">Το πρόβλημα δημιουργείται επειδή οι κάδοι είναι λίγοι και αδειάζουν σπάνια, ενώ κάποιοι επισκέπτες πετούν τα σκουπίδια τους στο έδαφος. Έτσι το πάρκο μυρίζει άσχημα και γεμίζει μύγες και αδέσποτα ζώα. Όταν βρέχει, τα πλαστικά παρασύρονται από το νερό και καταλήγουν τελικά στα ποτάμια και στη θάλασσα, όπου κινδυνεύουν τα ψάρια και τα πουλιά. Εμείς δεν μπορούμε πια να παίζουμε εκεί με ασφάλεια.</p></div>
+    </div>
+    <div class="row">
+      <div class="lab c-green">4η παράγραφος<br>Προτείνω λύσεις</div>
+      <div class="txt"><p class="indent">Θα θέλαμε να σας προτείνουμε να τοποθετηθούν περισσότεροι κάδοι, μαζί με κάδους ανακύκλωσης, και να αδειάζουν πιο συχνά. Επιπλέον, μπορούν να μπουν πινακίδες που θα θυμίζουν στους επισκέπτες να κρατούν το πάρκο καθαρό. Εμείς είμαστε πρόθυμοι να βοηθήσουμε και να οργανώσουμε στο σχολείο μια ημέρα καθαρισμού.</p></div>
+    </div>
+    <div class="row">
+      <div class="lab c-orange">Βήμα 5<br>Ευχαριστώ και περιμένω απάντηση</div>
+      <div class="txt"><p class="indent">Σας ευχαριστούμε πολύ για τον χρόνο σας και ελπίζουμε να λάβουμε σύντομα απάντηση.</p></div>
+    </div>
+    <div class="row">
+      <div class="lab c-pink">Βήμα 5<br>Χαιρετισμός και υπογραφή</div>
+      <div class="txt"><p>Με εκτίμηση,<br>Οι μαθητές της Δ΄ τάξης του 6ου Δημοτικού Σχολείου Ξάνθης</p></div>
+    </div>
+  </div>
+  <p class="note">Το πρόβλημα που περιγράφεται (πάρκο, κάδοι) είναι φανταστικό παράδειγμα.</p>
+
+  <footer>© myspiderwebsite</footer>
+</section>
+
+<!-- ΣΕΛΙΔΑ 4 -->
+<section class="page">
+  <h2 style="margin-top:0">✅ Λίστα ελέγχου: Αξιολογώ την επιστολή μου</h2>
+  <p style="margin:0">Τσεκάρω ό,τι έχω κάνει.</p>
+  <ul class="check" id="checklist">
+    <li><label><input type="checkbox"> Έγραψα τόπο και ημερομηνία πάνω δεξιά.</label></li>
+    <li><label><input type="checkbox"> Έγραψα τα στοιχεία μου πάνω αριστερά.</label></li>
+    <li><label><input type="checkbox"> Άφησα μία κενή γραμμή και έγραψα προσφώνηση.</label></li>
+    <li><label><input type="checkbox"> Εξήγησα ποιο είναι το πρόβλημα.</label></li>
+    <li><label><input type="checkbox"> Είπα την αιτία και τι κακό προκαλεί.</label></li>
+    <li><label><input type="checkbox"> Πρότεινα τουλάχιστον δύο λύσεις.</label></li>
+    <li><label><input type="checkbox"> Άλλαξα παράγραφο κάθε φορά που άλλαζα θέμα.</label></li>
+    <li><label><input type="checkbox"> Έκλεισα με ευχαριστώ, χαιρετισμό και υπογραφή.</label></li>
+    <li><label><input type="checkbox"> Δεν επανέλαβα το ίδιο πράγμα πολλές φορές.</label></li>
+    <li><label><input type="checkbox"> Διόρθωσα τα λάθη (ορθογραφία, τελείες, κεφαλαία γράμματα).</label></li>
+    <li><label><input type="checkbox"> Η γραφή μου είναι καθαρή και ευανάγνωστη.</label></li>
+  </ul>
+  <div class="counter" id="counter">Τσεκαρισμένα: 0 από 11</div>
+
+  <h2>Χρήσιμες φράσεις</h2>
+  <table class="ph">
+    <tr><td>Αρχή</td><td>Σας γράφουμε για να… · Θα θέλαμε να σας ενημερώσουμε για…</td></tr>
+    <tr><td>Πρόβλημα</td><td>Το πρόβλημα είναι ότι… · Κάθε μέρα βλέπουμε…</td></tr>
+    <tr><td>Αιτία</td><td>Αυτό συμβαίνει επειδή… · Ο λόγος είναι ότι…</td></tr>
+    <tr><td>Συνέπειες</td><td>Έτσι… · Ως αποτέλεσμα… · Αυτό έχει ως συνέπεια…</td></tr>
+    <tr><td>Λύσεις</td><td>Θα θέλαμε να προτείνουμε… · Μια λύση θα ήταν… · Θα βοηθούσε πολύ αν…</td></tr>
+    <tr><td>Τέλος</td><td>Σας ευχαριστούμε για τον χρόνο σας. · Ελπίζουμε να λάβουμε σύντομα απάντηση.</td></tr>
+  </table>
+
+  <h2>Ο φάκελος</h2>
+  <p style="margin:0">Κλείνω την επιστολή σε φάκελο. Βάζω γραμματόσημο και τη στέλνω με το ταχυδρομείο.</p>
+  <div class="envelope">
+    <div class="from"><b>ΑΠΟΣΤΟΛΕΑΣ (πάνω αριστερά)</b>6ο Δημοτικό Σχολείο Ξάνθης<br>Βελισσαρίου 14<br>67131, Ξάνθη</div>
+    <div class="stamp">γραμμα-<br>τόσημο</div>
+    <div class="to"><b>ΠΑΡΑΛΗΠΤΗΣ (κάτω δεξιά)</b>Προς:<br>Δήμαρχο Ξάνθης<br>Δημαρχείο Ξάνθης, Πλατεία Δημοκρατίας<br>67132, Ξάνθη</div>
+  </div>
+
+  <footer>© myspiderwebsite</footer>
+</section>
+
+<script>
+  (function(){
+    var boxes = document.querySelectorAll('#checklist input');
+    var out = document.getElementById('counter');
+    function update(){
+      var n = 0;
+      for (var i = 0; i < boxes.length; i++) if (boxes[i].checked) n++;
+      out.textContent = 'Τσεκαρισμένα: ' + n + ' από ' + boxes.length + (n === boxes.length ? ' – Μπράβο! 🎉' : '');
+    }
+    for (var i = 0; i < boxes.length; i++) boxes[i].addEventListener('change', update);
+  })();
+</script>
+</body>
+</html>
